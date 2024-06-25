@@ -1,0 +1,24 @@
+
+
+{
+	"sEmptyTable":     "Nessun dato presente nella tabella",
+	"sInfo":           "<i class='fas fa-filter'></i> <b>da _START_ a _END_</b> su _TOTAL_",
+	"sInfoEmpty":      "Nessun elemento",
+	"sInfoFiltered":   "<br /><small style='margin-left: 1rem;'>(senza filtro: _MAX_)</small>",
+	"sInfoThousands":  ".",
+	"sLengthMenu":     "<i class='fas fa-list'></i> _MENU_",
+	"sLoadingRecords": "Caricamento...",
+	"sProcessing":     "Elaborazione...",
+	"sSearch":         "",
+	"sZeroRecords":    "Nessun risultato",
+	"oPaginate": {
+		"sFirst":      "<b>|</b><i class='fas fa-caret-left'></i>",
+		"sPrevious":   "<i class='fas fa-caret-left'></i>",
+		"sNext":       "<i class='fas fa-caret-right'></i>",
+		"sLast":       "<i class='fas fa-caret-right'></i><b>|</b>"
+	},
+	"oAria": {
+		"sSortAscending":  ": in ordine crescente",
+		"sSortDescending": ": in ordine decrescente"
+	}
+}

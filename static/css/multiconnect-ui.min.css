@@ -1,0 +1,79 @@
+.main-header.navbar {
+    background: linear-gradient(180deg, #007bff, #0056b3);
+    color: white;
+    position: sticky;
+    top: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+.main-header.navbar .nav-link, .main-header.navbar .nav-link i {
+    color: white;
+    transition: color 0.3s;
+}
+
+.main-sidebar {
+    background: linear-gradient(180deg, #343a40, #212529);
+    transition: background-color 0.3s;
+}
+
+.dark-mode .main-footer {
+    background: linear-gradient(180deg,#343a40,#212529);
+    color: white;
+}
+.dark-mode .card {
+    background-color: #343a40;
+    border-color: #343a40;
+    border-radius: 0.5rem;
+}
+.dark-mode .card-header {
+    background: linear-gradient(180deg,#343a40,#212529);
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+    border-bottom: none;
+}
+.dark-mode .card-title, .dark-mode .card-body, .dark-mode .navbar-light .navbar-nav .nav-link, .dark-mode .main-header.navbar .nav-link i, .dark-mode .nav-sidebar .nav-link, .dark-mode a, .dark-mode a:active, .dark-mode a:link, .dark-mode a:visited {
+    color: #ffffff;
+}
+.dark-mode a:hover {
+    text-decoration: none;
+}
+
+.card-header {
+    background: var(--bs-light);
+    color: var(--bs-dark);
+    transition: background-color 0.3s, color 0.3s;
+}
+.main-footer {
+    background: var(--bs-light);
+    color: var(--bs-dark);
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.7rem;
+}
+.pageContent{
+    padding:1rem 2rem;
+}
+.content-header{
+    padding: 0 0 0.6rem 0;
+}
+
+@media (max-width: 768px) {
+    .pageContent {
+        padding: 0.5rem;
+    }
+    .content-header{
+        padding: 0.4rem 0 0.4rem 0;
+    }
+}
+
+.main-header {
+    border-bottom: 1px solid #808080;
+    z-index: 1034;
+}
+
+.tooltip{
+    --bs-tooltip-bg: var(--bs-warning);
+}
+.tooltip-inner{
+    background-color: var(--bs-warning);
+    color: #000;
+    font-weight: 500;
+  }
