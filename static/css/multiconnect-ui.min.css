@@ -37,6 +37,9 @@
     text-decoration: none;
 }
 
+.card-title{
+    font-weight: bold;
+}
 .card-header {
     background: var(--bs-light);
     color: var(--bs-dark);
