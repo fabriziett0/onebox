@@ -13,7 +13,7 @@
 	<link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="{% static 'css/fa/css/all.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/adminlte.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/multiconnect-ui.min.css' %}" rel="stylesheet">
@@ -27,29 +27,29 @@
 	<div class="content-wrapper">
 		<div class="pageContent container">
 			<div class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1 class="m-0">{% block headTitle %}{% endblock %}</h1>
-						</div>
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-end">
-								{% block breadcrumb %}{% endblock %}
-							</ol>
-						</div>
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">{% block headTitle %}{% endblock %}</h1>
+					</div>
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-end">
+							{% block breadcrumb %}{% endblock %}
+						</ol>
 					</div>
 				</div>
 			</div>
-			{% block content %}{% endblock %}
+			<section class="content">
+				{% block content %}{% endblock %}
+			</section>
 		</div>
     </div>
     <aside class="control-sidebar control-sidebar-dark" aria-label="Control sidebar"></aside>
 	{% include 'footer.html' %}
 </div>
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/adminlte.min.js' %}"></script>
-    <script src="{% static 'js/multiconnect-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/adminlte.min.js' %}"></script>
+<script src="{% static 'js/multiconnect-ui.min.js' %}"></script>
 {% block extra_js %}{% endblock %}
 </body>
 </html>
