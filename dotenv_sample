@@ -1,0 +1,6 @@
+SECRET_KEY=##################################################
+DEBUG=True/False
+ALLOWED_HOSTS=localhost,127.0.0.1,
+POSTGRES_DB=dbname
+POSTGRES_USER=dbuser
+POSTGRES_PASSWORD=dbpass
