@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block extra_head %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+{% endblock %}
+{% block content %}
+  <h1>Lista delle Aziende</h1>
+  <table id="aziendeTable" class="display">
+    <thead>
+      <tr>
+        <th>Ragione Sociale</th>
+        <th>Partita IVA</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for azienda in object_list %}
+      <tr>
+        <td>{{ azienda.ragione_sociale }}</td>
+        <td>{{ azienda.partita_iva }}</td>
+        <td>
+          <a href="{% url 'aziende-detail' azienda.pk %}">Dettagli</a> |
+          <a href="{% url 'aziende-update' azienda.pk %}">Modifica</a> |
+          <a href="{% url 'aziende-delete' azienda.pk %}">Elimina</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+{% block extra_js %}
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+  <script>
+    $(document).ready( function () {
+        $('#aziendeTable').DataTable();
+    });
+  </script>
+{% endblock %}

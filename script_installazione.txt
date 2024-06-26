@@ -1,0 +1,23 @@
+TESTATO SU AMAZON LIGHTSAIL
+
+sudo apt update
+sudo apt upgrade -y
+	keep existing version
+	OK kernel
+	OK default
+	sudo reboot
+sudo apt install docker.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+git clone -b prod https://github.com/fabriziett0/onebox.git onebox
+cd onebox
+echo "SECRET_KEY=ekneavtw-56jew(_m3dd&2l)lgs&&((t*mfhm9jj@x#fo#f%" >> .env
+echo "DEBUG=False" >> .env
+echo "ALLOWED_HOSTS=3.70.47.240" >> .env
+echo "POSTGRES_DB=onebox_db" >> .env
+echo "POSTGRES_USER=madmindb" >> .env
+echo "POSTGRES_PASSWORD=Abracadabra.2057" >> .env
+sudo docker-compose build
+sudo docker-compose up -d

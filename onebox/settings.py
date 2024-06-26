@@ -34,7 +34,7 @@ ROOT_URLCONF = 'onebox.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'core/templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'rubrica', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -46,6 +46,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 DATABASES = {
     'default': {

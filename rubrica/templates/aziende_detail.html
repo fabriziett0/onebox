@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Dettagli Azienda</h1>
+  <table class="table">
+    <tr>
+      <th>Ragione Sociale</th>
+      <td>{{ object.ragione_sociale }}</td>
+    </tr>
+    <tr>
+      <th>Abbreviazione</th>
+      <td>{{ object.abbreviazione }}</td>
+    </tr>
+    <!-- Aggiungi tutti i campi necessari nello stesso formato -->
+  </table>
+  <a href="{% url 'aziende-update' object.pk %}" class="btn btn-primary">Modifica</a>
+  <a href="{% url 'aziende-delete' object.pk %}" class="btn btn-danger">Elimina</a>
+  <a href="{% url 'aziende-list' %}" class="btn btn-secondary">Indietro</a>
+{% endblock %}

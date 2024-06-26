@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+{% block headTitle %}{% if form.instance.pk %}Modifica{% else %}Crea{% endif %} azienda{% endblock %}
+{% block breadcrumb %}{% endblock %}
+{% block extra_head %}{% endblock %}
+{% block content %}
+<div class="row row-cols-3">
+    <div class="col-12">
+		<form method="post">
+			<div class="card card-outline card-primary">
+				<div class="card-body">
+					{% csrf_token %}
+					<div class="row">
+						<div class="col-md-2">
+							<ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Base</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">Sede legale</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Attributi</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false">Sedi</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="tab5-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab5" aria-selected="false">Persone</button>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-10">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+									<div class="card-body pt-0 row row-cols-3">
+										<div class="col-12 mt-0">
+											<hr data-content="DENOMINAZIONE" class="hr-text">
+										</div>
+										<div class="col-9">
+											<div class="form-floating mb-3">
+												{{ form.ragione_sociale }}
+												<label for="{{ form.ragione_sociale.id_for_label }}">Ragione Sociale</label>
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-floating mb-3">
+												{{ form.abbreviazione }}
+												<label for="{{ form.abbreviazione.id_for_label }}">Abbreviazione</label>
+											</div>
+										</div>
+										<div class="col-12 mt-3">
+											<hr data-content="DATI FISCALI" class="hr-text">
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.partita_iva }}
+												<label for="{{ form.partita_iva.id_for_label }}">Partita IVA</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.codice_fiscale }}
+												<label for="{{ form.codice_fiscale.id_for_label }}">Codice Fiscale</label>
+											</div>
+										</div>
+										<div class="col-9">
+											<div class="form-floating mb-3">
+												{{ form.indirizzo_pec }}
+												<label for="{{ form.indirizzo_pec.id_for_label }}">Indirizzo PEC</label>
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-floating mb-3">
+												{{ form.codice_sdi }}
+												<label for="{{ form.codice_sdi.id_for_label }}">Codice SDI</label>
+											</div>
+										</div>
+										<div class="col-12 mt-3">
+											<hr data-content="SEDE PRINCIPALE" class="hr-text">
+										</div>
+										<div class="col-12">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_riferimento }}
+												<label for="{{ form.sedeMain_riferimento.id_for_label }}">Riferimento</label>
+											</div>
+										</div>
+										<div class="col-9">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_indirizzo }}
+												<label for="{{ form.sedeMain_indirizzo.id_for_label }}">Indirizzo</label>
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_numero_civico }}
+												<label for="{{ form.sedeMain_numero_civico.id_for_label }}">Numero Civico</label>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_cap }}
+												<label for="{{ form.sedeMain_cap.id_for_label }}">CAP</label>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_citta }}
+												<label for="{{ form.sedeMain_citta.id_for_label }}">Città</label>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_provincia }}
+												<label for="{{ form.sedeMain_provincia.id_for_label }}">Provincia</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_telefono }}
+												<label for="{{ form.sedeMain_telefono.id_for_label }}">Telefono</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_email }}
+												<label for="{{ form.sedeMain_email.id_for_label }}">Email</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_info_mittente }}
+												<label for="{{ form.sedeMain_info_mittente.id_for_label }}">Info Mittente</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.sedeMain_info_edificio }}
+												<label for="{{ form.sedeMain_info_edificio.id_for_label }}">Info Edificio</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+									<div class="card-body pt-0 row row-cols-3">
+										<div class="col-12">
+											<hr data-content="SEDE LEGALE" class="hr-text">
+										</div>
+										<div class="col-9">
+											<div class="form-floating mb-3">
+												{{ form.sedeLegal_indirizzo }}
+												<label for="{{ form.sedeLegal_indirizzo.id_for_label }}">Indirizzo</label>
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-floating mb-3">
+												{{ form.sedeLegal_numero_civico }}
+												<label for="{{ form.sedeLegal_numero_civico.id_for_label }}">Numero Civico</label>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-floating mb-3">
+												{{ form.sedeLegal_cap }}
+												<label for="{{ form.sedeLegal_cap.id_for_label }}">CAP</label>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-floating mb-3">
+												{{ form.sedeLegal_citta }}
+												<label for="{{ form.sedeLegal_citta.id_for_label }}">Città</label>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-floating mb-3">
+												{{ form.sedeLegal_provincia }}
+												<label for="{{ form.sedeLegal_provincia.id_for_label }}">Provincia</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.sedeLegal_telefono_principale }}
+												<label for="{{ form.sedeLegal_telefono_principale.id_for_label }}">Telefono Principale</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.sedeLegal_email_principale }}
+												<label for="{{ form.sedeLegal_email_principale.id_for_label }}">Email Principale</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.sedeLegal_info_mittente }}
+												<label for="{{ form.sedeLegal_info_mittente.id_for_label }}">Info Mittente</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.sedeLegal_info_edificio }}
+												<label for="{{ form.sedeLegal_info_edificio.id_for_label }}">Info Edificio</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+									<div class="card-body">
+										<div class="col-12">
+											<div class="form-floating mb-3">
+												{{ form.tipo_contatto }}
+												<label for="{{ form.tipo_contatto.id_for_label }}">Tipo Contatto</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.attivo }}
+												<label for="{{ form.attivo.id_for_label }}">Attivo</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+												{{ form.bloccato }}
+												<label for="{{ form.bloccato.id_for_label }}">Bloccato</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<button type="submit" class="btn btn-success float-right mr-2">Salva</button>
+					<a href="{% url 'aziende-list' %}" class="btn btn-secondary float-right mr-2">Annulla</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    $('input').each(function() {
+        $(this).addClass('form-control');
+        $(this).attr('placeholder', '');
+    });
+    $('select').each(function() {
+        $(this).addClass('form-control');
+        $(this).attr('placeholder', '');
+    });
+    $('textarea').each(function() {
+        $(this).addClass('form-control');
+        $(this).attr('placeholder', '');
+    });
+    $('input:visible:first').focus();
+});
+</script>
+{% endblock %}
