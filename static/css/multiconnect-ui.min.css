@@ -1,18 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+body{
+    font-size: 1rem;
+    font-family: "Nunito", sans-serif !important;
+}
 .main-header.navbar {
     background: linear-gradient(180deg, #007bff, #0056b3);
     color: white;
     position: sticky;
     top: 0;
-    transition: background-color 0.3s, color 0.3s;
+    /* transition: background-color 0.3s, color 0.3s; */
 }
 .main-header.navbar .nav-link, .main-header.navbar .nav-link i {
     color: white;
-    transition: color 0.3s;
+    /* transition: color 0.3s; */
 }
 
 .main-sidebar {
     background: linear-gradient(180deg, #343a40, #212529);
-    transition: background-color 0.3s;
+    /* transition: background-color 0.3s; */
 }
 
 .dark-mode .main-footer {
@@ -22,7 +27,6 @@
 .dark-mode .card {
     background-color: #343a40;
     border-color: #343a40;
-    border-radius: 0.5rem;
 }
 .dark-mode .card-header {
     background: linear-gradient(180deg,#343a40,#212529);
@@ -37,6 +41,9 @@
     text-decoration: none;
 }
 
+/* .card {
+    border-radius: 0.7rem;
+}
 .card-title{
     font-weight: bold;
 }
@@ -44,15 +51,18 @@
     background: var(--bs-light);
     color: var(--bs-dark);
     transition: background-color 0.3s, color 0.3s;
-}
+} */
 .main-footer {
     background: var(--bs-light);
     color: var(--bs-dark);
     transition: background-color 0.3s, color 0.3s;
     font-size: 0.7rem;
 }
-.pageContent{
-    padding:1rem 2rem;
+.pageContent.container-fluid{
+    padding:1.5rem 2rem;
+}
+.pageContent.container{
+    padding:1.5rem 0;
 }
 .content-header{
     padding: 0 0 0.6rem 0;
@@ -80,3 +90,66 @@
     color: #000;
     font-weight: 500;
   }
+
+  label{
+    font-size:1rem;
+    margin-bottom: 0.1rem;
+  }
+
+  input.form-control{
+    padding-top: 5rem;
+    margin-bottom: 1rem;
+    font-size:1.2rem;
+    font-weight:600;
+    text-transform: uppercase;
+}
+hr.hr-text {
+    position: relative;
+    border: none;
+    height: 2px;
+    background: #95a2af;
+    margin: 1.2rem 0 1.2rem 3rem;
+    opacity: 1;
+}
+
+hr.hr-text::before {
+    content: attr(data-content);
+    display: inline-block;
+    background: #95a2af;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,1);
+    border-radius: 10rem;
+    padding: 0.2rem 0.7rem;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    }
+
+.nav-pills .nav-link.active, .nav-pills .nav-link{
+    width: 100%;
+    text-align: start;
+}
+.nav-pills .nav-link.active{
+    background-color: #95a2af;
+    color:white;
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+    font-weight:400;
+    font-size:1rem;
+    color: rgb(172 172 172) !important;
+}
+
+.form-floating>.form-control-plaintext~label,.form-floating>.form-control:focus~label,.form-floating>.form-control:not(:placeholder-shown)~label,.form-floating>.form-select~label {
+    transform: scale(.75) translateY(-.5rem) translateX(.15rem);
+    color: rgb(172 172 172);
+}
+.form-floating>.form-control-plaintext~label::after, .form-floating>.form-control:focus~label::after, .form-floating>.form-control:not(:placeholder-shown)~label::after, .form-floating>.form-select~label::after {
+    background-color:transparent !important;
+}
+.form-control:focus{
+    background-color:lemonchiffon;
+    border-width: 2px;
+}
