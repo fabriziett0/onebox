@@ -1,4 +1,4 @@
-    {% load static %}
+{% load static %}
     <aside class="main-sidebar sidebar-dark-primary elevation-4" aria-label="Sidebar">
         <a href="/" class="brand-link">
             <img src="{% static 'favicon/android-chrome-192x192.png' %}" alt="OneBox" class="brand-image" style="opacity: .8">
@@ -39,4 +39,39 @@
                 </ul>
             </nav>
         </div>
-    </aside>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/multiconnect-slider.js' %}"></script>
+<script src="{% static 'js/jquery.typeahead.min.js' %}"></script>
+<script>
+$(document).ready(function() {
+    $('#search').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    },
+    {
+        name: 'aziende',
+        source: function(query, syncResults, asyncResults) {
+            $.ajax({
+                url: '{% url "search" %}',
+                data: { query: query },
+                success: function(data) {
+                    asyncResults(data);
+                }
+            });
+        },
+        display: function(data) {
+            return data.ragione_sociale;
+        },
+        templates: {
+            suggestion: function(data) {
+                return '<div>' + data.ragione_sociale + ' (' + data.abbreviazione + ') - ' + data.partita_iva + '</div>';
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
