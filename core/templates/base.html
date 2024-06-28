@@ -13,20 +13,20 @@
 	<link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/adminlte.min.css' %}" rel="stylesheet">
+    <link href="{% static 'fa/css/all.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/multiconnect-ui.min.css' %}" rel="stylesheet">
     <style>body{opacity:0;transition:opacity 0.4s ease-in-out;background-color:#6c757d;}</style>
 	{% block extra_head %}{% endblock %}
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-{% include 'header.html' %}
-{% include 'sidebar.html' %}
-	<div class="content-wrapper">
-		<div class="pageContent container">
-			<div class="content-header">
+	<div class="wrapper">
+		{% include 'header.html' %}
+		{% include 'sidebar.html' %}
+		<div class="content-wrapper">
+			<div class="pageContent container">
+				<div class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6 px-0">
@@ -38,16 +38,16 @@
 							</ol>
 						</div>
 					</div>
+					{% block content %}{% endblock %}
 				</div>
 			</div>
-			{% block content %}{% endblock %}
 		</div>
     </div>
     <aside class="control-sidebar control-sidebar-dark" aria-label="Control sidebar"></aside>
 	{% include 'footer.html' %}
 </div>
     <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/adminlte.min.js' %}"></script>
     <script src="{% static 'js/multiconnect-ui.min.js' %}"></script>
 {% block extra_js %}{% endblock %}

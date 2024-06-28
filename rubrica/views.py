@@ -1,6 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Azienda
+from django.urls import reverse
+
 
 class AziendeListView(ListView):
     model = Azienda
@@ -20,7 +22,9 @@ class AziendeUpdateView(UpdateView):
     model = Azienda
     template_name = 'aziende_form.html'
     fields = '__all__'
-    success_url = reverse_lazy('aziende-list')
+
+    def get_success_url(self):
+            return reverse('aziende-detail', kwargs={'pk': self.object.pk})
 
 class AziendeDeleteView(DeleteView):
     model = Azienda

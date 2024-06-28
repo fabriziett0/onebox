@@ -1,18 +1,216 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block headerColor %}success{% endblock %}
+{% block title %}Dashboard{% endblock %}
+{% block headTitle %}Dettaglio azienda{% endblock %}
+{% block breadcrumb %}{% endblock %}
+{% block extra_head %}{% endblock %}
 {% block content %}
-  <h1>Dettagli Azienda</h1>
-  <table class="table">
-    <tr>
-      <th>Ragione Sociale</th>
-      <td>{{ object.ragione_sociale }}</td>
-    </tr>
-    <tr>
-      <th>Abbreviazione</th>
-      <td>{{ object.abbreviazione }}</td>
-    </tr>
-    <!-- Aggiungi tutti i campi necessari nello stesso formato -->
-  </table>
-  <a href="{% url 'aziende-update' object.pk %}" class="btn btn-primary">Modifica</a>
-  <a href="{% url 'aziende-delete' object.pk %}" class="btn btn-danger">Elimina</a>
-  <a href="{% url 'aziende-list' %}" class="btn btn-secondary">Indietro</a>
+<div class="row row-cols-3">
+    <div class="col-12">
+        <div class="card card-outline card-teal shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Base</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">Sede legale</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Attributi</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false">Sedi</button>
+                            </li>
+                            <li class="nav-item mb-4" role="presentation">
+                                <button class="nav-link" id="tab5-tab" data-bs-toggle="tab" data-bs-target="#tab5" type="button" role="tab" aria-controls="tab5" aria-selected="false">Persone</button>
+                            </li>
+                            <li class="mt-5 ml-1 d-none d-md-none">
+                                <span class="text-uppercase text-muted small fw-bold">Azioni disponibili</label>
+                                    <a href="{% url 'aziende-update' object.pk %}" class="btn btn-warning text-white d-block mt-2">Modifica</a>
+                                    <a href="{% url 'aziende-delete' object.pk %}" class="btn btn-danger text-white d-block mt-2">Elimina</a>
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                                <div class="card-body pt-0 row row-cols-3">
+                                    <div class="col-12 mt-0">
+                                        <hr data-content="DENOMINAZIONE" class="hr-text bg-primary">
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_ragione_sociale" placeholder="" value="{{ object.ragione_sociale }}">
+                                            <label for="id_ragione_sociale">Ragione Sociale</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_abbreviazione" placeholder="" value="{{ object.abbreviazione }}">
+                                            <label for="id_abbreviazione">Abbreviazione</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-0">
+                                        <hr data-content="DATI FISCALI" class="hr-text">
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_partita_iva" placeholder="" value="{{ object.partita_iva }}">
+                                            <label for="id_partita_iva">Partita IVA</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_codice_fiscale" placeholder="" value="{{ object.codice_fiscale }}">
+                                            <label for="id_codice_fiscale">Codice Fiscale</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_indirizzo_pec" placeholder="" value="{{ object.indirizzo_pec }}">
+                                            <label for="id_indirizzo_pec">Indirizzo PEC</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_codice_sdi" placeholder="" value="{{ object.codice_sdi }}">
+                                            <label for="id_codice_sdi">Codice SDI</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-0">
+                                        <hr data-content="SEDE PRINCIPALE" class="hr-text">
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_sedeMain_riferimento" placeholder="" value="{{ object.sedeMain_riferimento }}">
+                                            <label for="id_sedeMain_riferimento">Riferimento</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating mb-2">
+                                            <textarea type="text" disabled class="form-control detail-indirizzo" id="id_sedeMain_indirizzo" placeholder="">
+{{ object.sedeMain_indirizzo }}, {{ object.sedeMain_numero_civico }}
+{{ object.sedeMain_cap }} {{ object.sedeMain_citta }} ({{ object.sedeMain_provincia }})</textarea>
+                                            <label for="id_sedeMain_indirizzo">Indirizzo</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_sedeMain_telefono" placeholder="" value="{{ object.sedeMain_telefono }}">
+                                            <label for="id_sedeMain_telefono">Telefono</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_sedeMain_email" placeholder="" value="{{ object.sedeMain_email }}">
+                                            <label for="id_sedeMain_email">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_sedeMain_info_mittente" placeholder="" value="{{ object.sedeMain_info_mittente }}">
+                                            <label for="id_sedeMain_info_mittente">Info Mittente</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_sedeMain_info_edificio" placeholder="" value="{{ object.sedeMain_info_edificio }}">
+                                            <label for="id_sedeMain_info_edificio">Info Edificio</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                                <div class="card-body pt-0 row row-cols-3">
+                                    <div class="col-12">
+                                        <hr data-content="SEDE LEGALE" class="hr-text">
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating mb-2">
+                                            <textarea type="text" disabled class="form-control detail-indirizzo" id="id_sedeLegal_indirizzo" placeholder="">
+{{ object.sedeLegal_indirizzo }}, {{ object.sedeLegal_numero_civico }}
+{{ object.sedeLegal_cap }} {{ object.sedeLegal_citta }} ({{ object.sedeLegal_provincia }})</textarea>
+                                            <label for="id_sedeMain_indirizzo">Indirizzo</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_sedeLegal_telefono_principale" placeholder="" value="{{ object.sedeLegal_telefono_principale }}">
+                                            <label for="id_sedeLegal_telefono_principale">Telefono Principale</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_sedeLegal_email_principale" placeholder="" value="{{ object.sedeLegal_email_principale }}">
+                                            <label for="id_sedeLegal_email_principale">Email Principale</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_sedeLegal_info_mittente" placeholder="" value="{{ object.sedeLegal_info_mittente }}">
+                                            <label for="id_sedeLegal_info_mittente">Info Mittente</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_sedeLegal_info_edificio" placeholder="" value="{{ object.sedeLegal_info_edificio }}">
+                                            <label for="id_sedeLegal_info_edificio">Info Edificio</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                                <div class="card-body">
+                                    <div class="col-12">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_tipo_contatto" placeholder="" value="{{ object.tipo_contatto }}">
+                                            <label for="id_tipo_contatto">Tipo Contatto</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_attivo" placeholder="" value="{{ object.attivo }}">
+                                            <label for="id_attivo">Attivo</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" disabled class="form-control" id="id_bloccato" placeholder="" value="{{ object.bloccato }}">
+                                            <label for="id_bloccato">Bloccato</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'aziende-list' %}" class="btn btn-secondary mr-2">indietro</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        $('input').each(function() {
+            $(this).addClass('form-control');
+            $(this).attr('placeholder', '');
+        });
+        $('select').each(function() {
+            $(this).addClass('form-control');
+            $(this).attr('placeholder', '');
+        });
+        $('textarea').each(function() {
+            $(this).addClass('form-control');
+            $(this).attr('placeholder', '');
+        });
+    });
+</script>
 {% endblock %}

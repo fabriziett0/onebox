@@ -69,11 +69,17 @@ body{
 }
 
 @media (max-width: 768px) {
+    .pageContent.container-fluid{
+        padding:1rem;
+    }
+    .pageContent.container{
+        padding:0.5rem 1rem 1rem 1rem ;
+    }
     .pageContent {
         padding: 0.5rem;
     }
     .content-header{
-        padding: 0.4rem 0 0.4rem 0;
+        padding: 0 0 1rem 0;
     }
 }
 
@@ -96,43 +102,57 @@ body{
     margin-bottom: 0.1rem;
   }
 
-  input.form-control{
-    padding-top: 5rem;
-    margin-bottom: 1rem;
+  input.form-control,.detail-indirizzo{
+    margin-bottom: 0rem;
     font-size:1.2rem;
     font-weight:600;
     text-transform: uppercase;
 }
-hr.hr-text {
+hr.hr-text,hr.hr-text-r {
     position: relative;
     border: none;
     height: 2px;
-    background: #95a2af;
-    margin: 1.2rem 0 1.2rem 0;
+    margin: 1.0rem 0 1.2rem 0;
     opacity: 1;
 }
 
-hr.hr-text::before {
+hr.hr-text::before,hr.hr-text-r::before {
     content: attr(data-content);
     display: inline-block;
-    background: #95a2af;
     font-weight: bold;
     font-size: 0.85rem;
-    color: rgba(255,255,255,1);
-    border-radius: 0.3rem;
+    color: white;
     padding: 0.2rem 0.7rem;
     position: absolute;
-    top: 50%;
-    left: 0%;
+    border-radius: 0.3rem;
+    top: 100%;
+}
+hr.hr-text{
+    background:var(--primary);
+}
+hr.hr-text::before{
+    background:var(--primary);
     transform: translate(0%, -50%);
-    }
+    left: 0%;
+}
+/* hr.hr-text-r{
+    background:var(--warning);
+}
+hr.hr-text-r::before{
+    background:var(--warning);
+    transform: translate(0%, -100%);
+    right: 0%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+} */
 
 .nav-pills .nav-link.active, .nav-pills .nav-link{
     width: 100%;
     text-align: start;
 }
 .nav-pills .nav-link.active{
-    background-color: #95a2af;
+    background-color:var(--primary);
     color:white;
 }
 
@@ -151,5 +171,18 @@ label:not(.form-check-label):not(.custom-file-label) {
 }
 .form-control:focus{
     background-color:lemonchiffon;
-    border-width: 2px;
+    border: 2px solid var(--warning);
+}
+
+.form-control:disabled{
+    background-color: white;
+    border: 0px;
+}
+
+.detail-indirizzo{
+    min-height: 5rem !important;
+    overflow:hidden;
+    resize: none;
+    padding-top: 5rem;
+
 }

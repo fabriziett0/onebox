@@ -1,38 +1,57 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block headerColor %}{% endblock %}
+{% block title %}Rubrica Aziende{% endblock %}
+{% block headTitle %}Rubrica aziende{% endblock %}
+{% block breadcrumb %}{% endblock %}
 {% block extra_head %}
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+<link href="{% static 'css/datatables.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/multiconnect-datatables.css' %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
-  <h1>Lista delle Aziende</h1>
-  <table id="aziendeTable" class="display">
-    <thead>
-      <tr>
-        <th>Ragione Sociale</th>
-        <th>Partita IVA</th>
-        <th>Azioni</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for azienda in object_list %}
-      <tr>
-        <td>{{ azienda.ragione_sociale }}</td>
-        <td>{{ azienda.partita_iva }}</td>
-        <td>
-          <a href="{% url 'aziende-detail' azienda.pk %}">Dettagli</a> |
-          <a href="{% url 'aziende-update' azienda.pk %}">Modifica</a> |
-          <a href="{% url 'aziende-delete' azienda.pk %}">Elimina</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+<div class="row row-cols-3">
+	<div class="col-12">
+		<div class="card card-outline card-primary shadow">
+			<div class="card-body">
+				<div class="row dataTables_wrapper">
+					<table id="aziendeTable" class="table table-striped table-hover" style="width:100%;">
+						<thead>
+							<tr>
+								<th>Ragione Sociale</th>
+								<th>Partita IVA</th>
+								<th>Indirizzo PEC</th>
+								<th>Indirizzo</th>
+								<th>Telefono</th>
+								<th>Email</th>
+								<th>Azioni</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for azienda in object_list %}
+							<tr>
+								<td><b>{{ azienda.ragione_sociale|upper }}</b></td>
+								<td>{{ azienda.partita_iva|upper }}</td>
+								<td>{{ azienda.indirizzo_pec|upper }}</td>
+								<td>{{ azienda.sedeMain_indirizzo|upper }}, {{ azienda.sedeMain_numero_civico|upper }}<br />{{ azienda.sedeMain_cap }} {{ azienda.sedeMain_citta|upper }} ({{ azienda.sedeMain_provincia|upper }})</td>
+								<td>{{ azienda.sedeMain_telefono }}</td>
+								<td>{{ azienda.sedeMain_email|lower }}</td>
+								<td><a href="{% url 'aziende-detail' azienda.pk %}" class="btn btn-primary btn-sm">Dettagli</a></td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
 {% block extra_js %}
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-  <script>
-    $(document).ready( function () {
-        $('#aziendeTable').DataTable();
-    });
-  </script>
+<script src="{% static 'js/datatables.min.js' %}"></script>
+<script src="{% static 'js/multiconnect-datatables.js' %}"></script>
+<script>
+       document.addEventListener('DOMContentLoaded', function() {
+            initializeDataTable('#aziendeTable', [2, 4, 5]);
+        });
+</script>
 {% endblock %}

@@ -2,14 +2,14 @@
 
 {
 	"sEmptyTable":     "Nessun dato presente nella tabella",
-	"sInfo":           "<i class='fas fa-filter'></i> <b>da _START_ a _END_</b> su _TOTAL_",
-	"sInfoEmpty":      "Nessun elemento",
-	"sInfoFiltered":   "<br /><small style='margin-left: 1rem;'>(senza filtro: _MAX_)</small>",
+	"sInfo":           "<i class='fas fa-filter'></i> <b>da _START_ a _END_</b><span class='d-block pl-4 text-xs'>di _TOTAL_ totali</span>",
+	"sInfoEmpty":      "Nessun risultato",
+	"sInfoFiltered":   "<span class='d-block pl-4 text-xs'>senza filtro: _MAX_</span>",
 	"sInfoThousands":  ".",
 	"sLengthMenu":     "<i class='fas fa-list'></i> _MENU_",
 	"sLoadingRecords": "Caricamento...",
 	"sProcessing":     "Elaborazione...",
-	"sSearch":         "",
+	"sSearch":         "<i class='fas fa-search'></i>",
 	"sZeroRecords":    "Nessun risultato",
 	"oPaginate": {
 		"sFirst":      "<b>|</b><i class='fas fa-caret-left'></i>",
@@ -20,5 +20,9 @@
 	"oAria": {
 		"sSortAscending":  ": in ordine crescente",
 		"sSortDescending": ": in ordine decrescente"
+	},
+	"buttons": {
+		"colvis": "Colonne",
+		"colvisRestore": "Tutte"
 	}
 }

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block headerColor %}{% endblock %}
+{% block title %}Rubrica Aziende{% endblock %}
+{% block headTitle %}Rubrica aziende{% endblock %}
+{% block breadcrumb %}{% endblock %}
+{% block extra_head %}
+<link href="{% static 'css/dataTables.jqueryui.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/buttons.jqueryui.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.jqueryui.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/multiconnect-ui.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/datatables_custom.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="row row-cols-3">
+  <div class="col-12">
+      <div class="card card-outline card-teal shadow">
+          <div class="card-body">
+              <div class="row" id="dtwrapper">
+                <table id="aziendeTable" class="table table-bordered table-striped table-hover dataTable dtr-inline" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>Ragione Sociale</th>
+                            <th>Partita IVA</th>
+                            <th>Indirizzo PEC</th>
+                            <th>Indirizzo</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for azienda in object_list %}
+                        <tr>
+                            <td>{{ azienda.ragione_sociale|upper }}</td>
+                            <td>{{ azienda.partita_iva|upper }}</td>
+                            <td>{{ azienda.indirizzo_pec|upper }}</td>
+                            <td>{{ azienda.sedeMain_indirizzo|upper }}, {{ azienda.sedeMain_numero_civico|upper }}<br />{{ azienda.sedeMain_cap }} {{ azienda.sedeMain_citta|upper }} ({{ azienda.sedeMain_provincia|upper }})</td>
+                            <td>{{ azienda.sedeMain_telefono }}</td>
+                            <td>{{ azienda.sedeMain_email|lower }}</td>
+                            <td><a href="{% url 'aziende-detail' azienda.pk %}" class="btn btn-primary btn-sm">Dettagli</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.jqueryui.min.js' %}"></script>
+<script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'js/buttons.jqueryui.min.js' %}"></script>
+<script src="{% static 'js/buttons.colVis.min.js' %}"></script>
+<script src="{% static 'js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'js/responsive.jqueryui.min.js' %}"></script>
+<script>
+$(document).ready(function() {
+        var table = $('#aziendeTable').DataTable({
+            responsive: true,
+            language: {
+                url: "{% static 'js/datatables_italian.json' %}"
+            },
+            dom: 'Bfrtip',
+            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            columnDefs: [
+                {
+                    targets: [1, 2], // Indici delle colonne "Indirizzo" e "Email"
+                    visible: false
+                  }
+                ],
+            drawCallback: function(settings) {
+                var api = this.api();
+
+                // Nascondi il paginatore se c'è solo una pagina
+                var pagination = $(api.table().container()).find('.dataTables_paginate');
+                if (api.page.info().pages <= 1) {
+                    pagination.css('display', 'none');
+                } else {
+                    pagination.css('display', 'block');
+                }
+
+                // Nascondi le info se non c'è filtro
+                var info = $(api.table().container()).find('.dataTables_info');
+                if (api.search() === "") {
+                    info.css('display', 'none');
+                } else {
+                    info.css('display', 'block');
+                }
+            }
+          });buttons().container().appendTo('#dtwrapper .col-md-6:eq(0)');
+    });
+</script>
+{% endblock %}
