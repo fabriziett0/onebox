@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dashboards{% endblock %}
+{% block headTitle %}Ciao {{ user.first_name }}{% endblock %}
+{% block breadcrumb %}{% endblock %}
+{% block extra_head %}<link href="{% static 'css/multiconnect-slider.css' %}" rel="stylesheet">{% endblock %}
+{% block content %}
+<div class="row row-cols-3">
+    <div class="col-12">
+        <div class="card card-outline card-primary shadow">
+            <div class="card-header"><h3 class="card-title">core/index.html</h3></div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Tab1</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">Tab2</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Tab3</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                                    1
+                                </div>
+                                <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                                    2
+                                </div>
+                                <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                                    3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/multiconnect-slider.js' %}"></script>
+<script>
+$(document).ready(function(){
+    createSlider('OrariApertura', '#007bff', '0600', '2100', 30, '#OrariAperturaContainer', 'Orari di apertura:');
+    createSlider('PiccoOperativo', '#f56954', '0600', '2100', 30, '#PiccoOperativoContainer', 'Picco operatività:');
+    createSlider('PausaPranzo', '#7cb91c', '0600', '2100', 30, '#PausaPranzoContainer', 'Pausa pranzo:');
+});
+</script>
+{% endblock %}
